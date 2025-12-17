@@ -1,9 +1,24 @@
-import { useEffect } from "react";
+import { useMemo } from "react";
 import useProducts from "../hooks/useProducts";
 
 const Home = () => {
     const [products, setProducts] = useProducts();
     // console.log(products);
+    
+    // const categories = useMemo(() => {
+    //   return [...new Set(products.map(p => p.category))];
+    // }, [products]);
+
+    // (() => setCategories(() => {
+    //     return products.filter((product) => {
+    //         for (category of categories) {
+    //             if(product.category !== category) {
+    //                 return product.category
+    //             }
+    //         }
+    //     })
+    // }))
+    // console.log(categories, "categories array");
 
     return (
         <div>
@@ -17,8 +32,8 @@ const Home = () => {
 
         <section className="categories">
             <h2>Shop by Category</h2>
-         <div className="categoryGrid">
-             <div className="categoryCard">Electronics</div>
+            <div className="categoryGrid">
+            <div className="categoryCard">Electronics</div>
             <div className="categoryCard">Fashion</div>
             <div className="categoryCard">Home</div>
             <div className="categoryCard">Beauty</div>
