@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import useProducts from "../hooks/useProducts";
 
 const Home = () => {
@@ -156,8 +157,8 @@ const Home = () => {
     }
 
     const [products, setProducts] = useProducts();
-    console.log(products[0]);
-    
+    // console.log(products);
+
     return (
         <div>
         <section style={css.hero}>
@@ -182,7 +183,7 @@ const Home = () => {
             <h2>Featured Products</h2>
             <div style={css.productGrid}>
 
-            {products?.map((product) => {
+            {products?.slice(4,10).map((product) => {
                 return (
                 <div key={product.id} style={css.productCard}>
                     <img style={css.productImage} src={product.thumbnail} alt={product.title} />
