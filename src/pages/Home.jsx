@@ -45,9 +45,6 @@ const Home = () => {
             </div>
         </section>
 
-        <footer className="footer">
-            <p>© 2025 ShopEase. All rights reserved.</p>
-        </footer>
         </div>
     )
 }
