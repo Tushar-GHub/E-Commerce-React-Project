@@ -160,20 +160,6 @@ const Home = () => {
     
     return (
         <div>
-        <header style={css.navbar}>
-            <div style={css.logo}>ShopEase</div>
-            <nav>
-            <a style={css.navLink} href="#">Home</a>
-            <a style={css.navLink} href="#">Shop</a>
-            <a style={css.navLink} href="#">Categories</a>
-            <a style={css.navLink} href="#">Contact</a>
-            </nav>
-            <div style={css.navActions}>
-            <button style={css.btnOutline}>Login</button>
-            <button style={css.btn}>Cart (0)</button>
-            </div>
-        </header>
-
         <section style={css.hero}>
             <div style={css.heroContent}>
             <h1>Discover the Best Products</h1>
@@ -199,11 +185,11 @@ const Home = () => {
             {products?.map((product) => {
                 return (
                 <div key={product.id} style={css.productCard}>
-                    <img style={css.productImage} src="project-react-app\public\vite.svg" alt={product.title} />
+                    <img style={css.productImage} src={product.thumbnail} alt={product.title} />
                     <h3>{product.title}</h3>
-                    <p>{product.category}</p>
+                    <p style={{color: "darkgoldenrod"}}>{product.category}</p>
                     <p>${product.price}</p>
-                    <p>Rating: {product.rating.rate}  RatedBy: {product.rating.count} users </p>
+                    <p>Rating: {product.rating}</p>
                     <button style={css.btn}>Add to Cart</button>
                 </div>
                 )
