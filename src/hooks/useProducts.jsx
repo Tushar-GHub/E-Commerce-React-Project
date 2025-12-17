@@ -1,15 +1,15 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const useProducts = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch('https://fakestoreapiserver.reactbd.org/api/products/1')
+        fetch('https://fakestoreapiserver.reactbd.org/api/amazonproducts/')
         .then(res => res.json())
-        .then(data => setItems(data))
-    });
+        .then(json => setItems(json.data))
+    }, []);
 
     return [items, setItems];
 }
 
-export default useProducts;
+export default useProducts

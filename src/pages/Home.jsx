@@ -1,3 +1,5 @@
+import useProducts from "../hooks/useProducts";
+
 const Home = () => {
     const css = {
     //    * : {
@@ -111,7 +113,6 @@ const Home = () => {
           transition: "0.3s"
         },
     
-        /* ===== Products ===== */
         products: {
           padding: "3rem 2rem"
         },
@@ -145,7 +146,6 @@ const Home = () => {
           marginBottom: "1rem"
         },
     
-        /* ===== Footer ===== */
         footer: {
           backgroundColor: "#ffffff",
           padding: "1.5rem",
@@ -154,15 +154,19 @@ const Home = () => {
           boxShadow: "0 -2px 10px rgba(0,0,0,0.05)"
         }
     }
+
+    const [products, setProducts] = useProducts();
+    console.log(products[0]);
+    
     return (
         <div>
         <header style={css.navbar}>
             <div style={css.logo}>ShopEase</div>
             <nav>
-            <a href="#">Home</a>
-            <a href="#">Shop</a>
-            <a href="#">Categories</a>
-            <a href="#">Contact</a>
+            <a style={css.navLink} href="#">Home</a>
+            <a style={css.navLink} href="#">Shop</a>
+            <a style={css.navLink} href="#">Categories</a>
+            <a style={css.navLink} href="#">Contact</a>
             </nav>
             <div style={css.navActions}>
             <button style={css.btnOutline}>Login</button>
@@ -192,13 +196,18 @@ const Home = () => {
             <h2>Featured Products</h2>
             <div style={css.productGrid}>
 
-            <div style={css.productCard}>
-                <img src="https://via.placeholder.com/250" alt="Product" />
-                <h3>Wireless Headphones</h3>
-                <p>$99.99</p>
-                <button style={css.btn}>Add to Cart</button>
-            </div>
-
+            {products?.map((product) => {
+                return (
+                <div key={product.id} style={css.productCard}>
+                    <img style={css.productImage} src="project-react-app\public\vite.svg" alt={product.title} />
+                    <h3>{product.title}</h3>
+                    <p>{product.category}</p>
+                    <p>${product.price}</p>
+                    <p>Rating: {product.rating.rate}  RatedBy: {product.rating.count} users </p>
+                    <button style={css.btn}>Add to Cart</button>
+                </div>
+                )
+            })}
       
             </div>
         </section>
